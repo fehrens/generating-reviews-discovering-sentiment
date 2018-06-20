@@ -18,7 +18,7 @@ URL = 'https://github.com/fehrens/generating-reviews-discovering-sentiment'
 EMAIL = 'me@example.com'
 AUTHOR = 'OpenAI'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = None
+VERSION = '0.9'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
