@@ -14,7 +14,7 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'sentiment'
 DESCRIPTION = 'Predicting sentiment'
-URL = 'https://github.com/fehrens/generating-reviews-discovering-sentiment'
+URL = 'https://github.com/fehrens/sentiment'
 EMAIL = 'me@example.com'
 AUTHOR = 'OpenAI'
 REQUIRES_PYTHON = '>=3.6.0'
