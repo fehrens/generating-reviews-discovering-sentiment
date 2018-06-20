@@ -1,3 +1,5 @@
+## fehrens: added setup.py file
+
 # Generating Reviews and Discovering Sentiment
 
 Code for [Learning to Generate Reviews and Discovering Sentiment](https://arxiv.org/abs/1704.01444) (Alec Radford, Rafal Jozefowicz, Ilya Sutskever).
