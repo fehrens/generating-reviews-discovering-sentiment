@@ -18,7 +18,7 @@ URL = 'https://github.com/fehrens/generating-reviews-discovering-sentiment'
 EMAIL = 'me@example.com'
 AUTHOR = 'OpenAI'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '1.0.0'
+VERSION = '0.10.50'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -86,7 +86,7 @@ class UploadCommand(Command):
 # Where the magic happens:
 setup(
     name=NAME,
-    version=about['__version__'],
+    version=VERSION,
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type='text/markdown',
