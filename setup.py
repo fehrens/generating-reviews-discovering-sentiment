@@ -12,7 +12,7 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'generating-reviews-discovering-sentiment'
+NAME = 'sentiment'
 DESCRIPTION = 'Predicting sentiment'
 URL = 'https://github.com/fehrens/generating-reviews-discovering-sentiment'
 EMAIL = 'me@example.com'
