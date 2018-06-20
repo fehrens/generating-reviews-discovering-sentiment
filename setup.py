@@ -22,7 +22,7 @@ VERSION = '0.10.50'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-     'sklearn', 'tensorflow', 'pandas', 'numpy', 'os', 'matplotlib', 'tqdm'
+     'sklearn', 'tensorflow', 'pandas', 'numpy', 'matplotlib', 'tqdm'
 ]
 
 # The rest you shouldn't have to touch too much :)
