@@ -18,7 +18,7 @@ URL = 'https://github.com/fehrens/sentiment'
 EMAIL = 'me@example.com'
 AUTHOR = 'OpenAI'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.15.50'
+VERSION = '0.16.50'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
