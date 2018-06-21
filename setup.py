@@ -18,7 +18,7 @@ URL = 'https://github.com/fehrens/sentiment'
 EMAIL = 'me@example.com'
 AUTHOR = 'OpenAI'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.12.50'
+VERSION = '0.13.50'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -94,7 +94,7 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('data')),
+    packages=find_packages(exclude=('data',)),
      #find_packages(exclude=('tests',)),
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
