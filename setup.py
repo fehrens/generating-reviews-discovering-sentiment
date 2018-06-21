@@ -18,7 +18,7 @@ URL = 'https://github.com/fehrens/sentiment'
 EMAIL = 'me@example.com'
 AUTHOR = 'OpenAI'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.13.50'
+VERSION = '0.14.50'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -45,6 +45,14 @@ if not VERSION:
 else:
     about['__version__'] = VERSION
 
+def package_files(directory):
+    paths = []
+    for (path, directories, filenames) in os.walk(directory):
+        for filename in filenames:
+            paths.append(os.path.join('..', path, filename))
+    return paths
+
+extra_files = package_files('model/')
 
 class UploadCommand(Command):
     """Support setup.py upload."""
@@ -94,7 +102,7 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('data',)),
+    packages=['sentiment'],
      #find_packages(exclude=('tests',)),
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
@@ -104,6 +112,7 @@ setup(
     # },
     install_requires=REQUIRED,
     include_package_data=True,
+    package_data={'': extra_files},
     license='MIT',
     classifiers=[
         # Trove classifiers
