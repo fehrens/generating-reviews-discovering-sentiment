@@ -103,6 +103,7 @@ setup(
     # },
     install_requires=REQUIRED,
     include_package_data=True,
+    package_data={'sentiment.model': ['*']},
     license='MIT',
     classifiers=[
         # Trove classifiers
