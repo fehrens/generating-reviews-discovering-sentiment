@@ -33,7 +33,7 @@ def train_with_reg_cv(trX, trY, vaX, vaY, teX=None, teY=None, penalty='l1',
     return score, c, nnotzero
 
 def predict_with_reg_cv(X):
-    log_reg_file = Path('log_reg.sav'))
+    log_reg_file = Path('log_reg.sav')
     if log_reg_file.exists():
         print('LogReg file exists and will start the prediction now.')
         model = encoder.Model()
