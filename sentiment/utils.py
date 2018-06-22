@@ -3,6 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+import pkg_resources
 from sklearn.linear_model import LogisticRegression
 
 def train_with_reg_cv(trX, trY, vaX, vaY, teX=None, teY=None, penalty='l1',
@@ -31,7 +32,7 @@ def load_sst(path):
     return X, Y
 
 
-def sst_binary(data_dir='data/'):
+def sst_binary(data_dir=pkg_resources.resource_filename('sentiment', 'data/')):
     """
     Most standard models make use of a preprocessed/tokenized/lowercased version
     of Stanford Sentiment Treebank. Our model extracts features from a version

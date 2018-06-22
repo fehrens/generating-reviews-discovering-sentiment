@@ -1,11 +1,15 @@
 import time
 import numpy as np
 import tensorflow as tf
-
+import pkg_resources
 from tqdm import tqdm
 from sklearn.externals import joblib
 
-from utils import HParams, preprocess, iter_data
+#fe change
+#from tensorflow.contrib.training import HParams
+#from future.utils import itervalues
+#from utils import preprocess
+from sentiment.utils import HParams, preprocess, iter_data
 
 global nloaded
 nloaded = 0
@@ -17,8 +21,8 @@ def load_params(shape, dtype, *args, **kwargs):
     return params[nloaded - 1]
 
 
-def embd(X, ndim, scope='embedding'):
-    with tf.variable_scope(scope):
+def embd(X, ndim, scope='embedding', reuse=False):
+    with tf.variable_scope(scope, reuse=reuse):
         embd = tf.get_variable(
             "w", [hps.nvocab, ndim], initializer=load_params)
         h = tf.nn.embedding_lookup(embd, X)
@@ -110,6 +114,7 @@ def batch_pad(xs, nbatch, nsteps):
     for i, x in enumerate(xs):
         l = len(x)
         npad = nsteps-l
+        #print(x)
         xmb[i, -l:] = list(x)
         mmb[i, :npad] = 0
     return xmb, mmb
@@ -133,14 +138,27 @@ class Model(object):
             embd_wn=True,
         )
         global params
-        params = [np.load('model/%d.npy'%i) for i in range(15)]
+        #fe
+        # params = [np.load('sentiment/model/%d.npy'%i) for i in range(15)]
+        #for i in range(15):
+            #print(pkg_resources.resource_filename('sentiment', 'model/0.npy'))
+        #params = [np.load(pkg_resources.resource_filename('sentiment', 'model/%d.npy'%i) for i in range(15))]
+        params = [None] * 15
+        for i in range(15):
+            file = pkg_resources.resource_filename('sentiment', 'model/%d.npy'%i)
+            #print(file)
+            params[i] = np.load(file)
+        #print(params)    
         params[2] = np.concatenate(params[2:6], axis=1)
         params[3:6] = []
 
         X = tf.placeholder(tf.int32, [None, hps.nsteps])
         M = tf.placeholder(tf.float32, [None, hps.nsteps, 1])
         S = tf.placeholder(tf.float32, [hps.nstates, None, hps.nhidden])
-        cells, states, logits = model(X, S, M, reuse=False)
+        #fe
+        cells, states, logits = model(X, S, M, reuse=tf.AUTO_REUSE)
+        #cells, states, logits = model(X, S, M, reuse=True)
+        
 
         sess = tf.Session()
         tf.global_variables_initializer().run(session=sess)
@@ -153,6 +171,7 @@ class Model(object):
 
         def transform(xs):
             tstart = time.time()
+            #fe
             xs = [preprocess(x) for x in xs]
             lens = np.asarray([len(x) for x in xs])
             sorted_idxs = np.argsort(lens)
@@ -188,7 +207,9 @@ class Model(object):
             Fs = []
             xs = [preprocess(x) for x in xs]
             for xmb in tqdm(
+                    #fe
                     iter_data(xs, size=hps.nbatch), ncols=80, leave=False,
+                    #itervalues(xs, size=hps.nbatch), ncols=80, leave=False,
                     total=len(xs)//hps.nbatch):
                 smb = np.zeros((2, hps.nbatch, hps.nhidden))
                 n = len(xmb)

@@ -18,7 +18,7 @@ URL = 'https://github.com/fehrens/sentiment'
 EMAIL = 'me@example.com'
 AUTHOR = 'OpenAI'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.17.50'
+VERSION = '0.18.50'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -93,7 +93,7 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=['sentiment','sentiment.model'],
+    packages=['sentiment','sentiment.model','sentiment.data'],
      #find_packages(exclude=('tests',)),
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
@@ -103,7 +103,7 @@ setup(
     # },
     install_requires=REQUIRED,
     include_package_data=True,
-    package_data={'sentiment.model': ['*']},
+    package_data={'sentiment.model': ['*'],'sentiment.data': ['*']},
     license='MIT',
     classifiers=[
         # Trove classifiers
