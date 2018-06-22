@@ -18,10 +18,10 @@ URL = 'https://github.com/fehrens/sentiment'
 EMAIL = 'me@example.com'
 AUTHOR = 'OpenAI'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.19.50'
+VERSION = '0.20.50'
 
 # What packages are required for this module to be executed?
-REQUIRED = [
+REQUIRED = 
      'sklearn', 'tensorflow', 'pandas', 'numpy', 'matplotlib', 'tqdm'
 ]
 
