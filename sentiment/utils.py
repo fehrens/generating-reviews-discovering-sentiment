@@ -23,7 +23,7 @@ def train_with_reg_cv(trX, trY, vaX, vaY, teX=None, teY=None, penalty='l1',
     model = LogisticRegression(C=c, penalty=penalty, random_state=seed+len(C))
     model.fit(trX, trY)
     #fe save the model 
-    filename = pkg_resources.resource_filename('sentiment', 'model/log_reg.sav')
+    filename = ('log_reg.sav')
     pickle.dump(model, open(filename, 'wb'))
     nnotzero = np.sum(model.coef_ != 0)
     if teX is not None and teY is not None:
@@ -33,7 +33,7 @@ def train_with_reg_cv(trX, trY, vaX, vaY, teX=None, teY=None, penalty='l1',
     return score, c, nnotzero
 
 def predict_with_reg_cv(X):
-    log_reg_file = Path(pkg_resources.resource_filename('sentiment', 'model/log_reg.sav'))
+    log_reg_file = Path('log_reg.sav'))
     if log_reg_file.exists():
         print('LogReg file exists and will start the prediction now.')
         model = encoder.Model()
