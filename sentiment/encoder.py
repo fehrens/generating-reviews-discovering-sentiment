@@ -3,13 +3,16 @@ import numpy as np
 import tensorflow as tf
 import pkg_resources
 from tqdm import tqdm
+from sentiment import *
+from . import encoder
+from . import utils
 from sklearn.externals import joblib
 
 #fe change
 #from tensorflow.contrib.training import HParams
 #from future.utils import itervalues
 #from utils import preprocess
-from sentiment.utils import HParams, preprocess, iter_data
+#from sentiment.utils import HParams, preprocess, iter_data
 
 global nloaded
 nloaded = 0
@@ -124,7 +127,7 @@ class Model(object):
 
     def __init__(self, nbatch=128, nsteps=64):
         global hps
-        hps = HParams(
+        hps = utils.HParams(
             load_path='model_params/params.jl',
             nhidden=4096,
             nembd=64,
@@ -172,7 +175,7 @@ class Model(object):
         def transform(xs):
             tstart = time.time()
             #fe
-            xs = [preprocess(x) for x in xs]
+            xs = [utils.preprocess(x) for x in xs]
             lens = np.asarray([len(x) for x in xs])
             sorted_idxs = np.argsort(lens)
             unsort_idxs = np.argsort(sorted_idxs)
